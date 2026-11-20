@@ -1,0 +1,123 @@
+/* Rain City editor: a dark, cold UI to match the cover it makes. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #0a141d;
+  color: #dbe7ef;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.app {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.controls h1 {
+  margin: 0;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 34px;
+  letter-spacing: 2px;
+  color: #e9f1f6;
+}
+.controls h1::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin-top: 6px;
+  background: #7fb2d9;
+}
+.tagline { color: #9db8c6; margin: 10px 0 4px; }
+.controls h2 {
+  margin: 22px 0 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7fb2d9;
+}
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+button {
+  background: #16283a;
+  color: #dbe7ef;
+  border: 1px solid #2b455c;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { border-color: #7fb2d9; }
+button.active { background: #7fb2d9; color: #0a141d; border-color: #7fb2d9; font-weight: bold; }
+button.primary {
+  background: #7fb2d9;
+  color: #0a141d;
+  border-color: #7fb2d9;
+  font-weight: bold;
+  font-size: 17px;
+  padding: 12px 18px;
+  margin-top: 6px;
+}
+label { display: block; margin: 8px 0; }
+label.file { cursor: pointer; }
+input[type="text"] {
+  width: 100%;
+  background: #101f2d;
+  color: #e9f1f6;
+  border: 1px solid #2b455c;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font: inherit;
+  margin-top: 4px;
+}
+input[type="range"] { width: 100%; accent-color: #7fb2d9; }
+input[type="checkbox"] { accent-color: #7fb2d9; }
+.hint { color: #8ba3b2; font-size: 13px; margin: 6px 0; }
+.panels { display: grid; gap: 8px; margin: 8px 0; }
+.panel-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 90px;
+  gap: 8px;
+  align-items: center;
+  background: #101f2d;
+  border: 1px solid #22384a;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+}
+.panel-row.selected { border-color: #7fb2d9; }
+.panel-row select {
+  background: #16283a;
+  color: #dbe7ef;
+  border: 1px solid #2b455c;
+  border-radius: 4px;
+  padding: 6px;
+  font: inherit;
+  min-width: 0;
+}
+#status { color: #7fb2d9; min-height: 1.4em; }
+.preview {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 200px;
+}
+#cover {
+  width: min(100%, 720px);
+  height: auto;
+  background: #0e1a24;
+  border: 1px solid #22384a;
+  cursor: grab;
+  touch-action: none;
+}
+#cover:active { cursor: grabbing; }
+/* Screenshot mode: the cover alone, filling the frame, no editor. */
+body.shot-cover .controls { display: none; }
+body.shot-cover .app { display: block; max-width: none; padding: 0; }
+body.shot-cover .preview { display: block; }
+body.shot-cover #cover { width: 100vw; height: 100vh; object-fit: contain; border: 0; background: #000; }
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+}

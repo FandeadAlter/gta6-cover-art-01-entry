@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rain City — Vice Noir Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>RAIN CITY</h1>
+    <p class="tagline">Vice Noir cover maker — the anti-neon GTA 6 poster. Cold rain, wet asphalt, 3 AM. No sunset, no neon.</p>
+
+    <h2>1 · Photo</h2>
+    <label class="file">Your photo <input id="photo" type="file" accept="image/*" multiple></label>
+    <div class="row">
+      <button type="button" data-sample="rain-street">Rain Street</button>
+      <button type="button" data-sample="rain-boulevard">Rain Boulevard</button>
+    </div>
+    <p class="hint">Samples were made with an image model. Your photos stay on your machine — nothing is uploaded.</p>
+
+    <h2>2 · Panels</h2>
+    <div class="row" role="group" aria-label="Panel layout">
+      <button type="button" data-layout="hero" class="active">Hero</button>
+      <button type="button" data-layout="split">Split</button>
+      <button type="button" data-layout="triptych">Triptych</button>
+      <button type="button" data-layout="grid">Grid</button>
+    </div>
+    <div id="panels" class="panels"></div>
+    <p class="hint">Click a panel in the preview to pick it, then drag it to move its photo. The zoom slider crops it tighter.</p>
+
+    <h2>3 · Grade</h2>
+    <div class="row" role="group" aria-label="Colour grade">
+      <button type="button" data-grade="rain" class="active">Rain Noir</button>
+      <button type="button" data-grade="neon">Neon Sunset</button>
+      <button type="button" data-grade="mono">Mono</button>
+      <button type="button" data-grade="dusk">Dusk Teal</button>
+    </div>
+    <label>Rain <input id="rain" type="range" min="0" max="1" step="0.05" value="0.7"></label>
+    <label><input id="vignette" type="checkbox" checked> Vignette</label>
+
+    <h2>4 · Caption</h2>
+    <label>Caption <input id="caption" type="text" maxlength="40" value="RAIN CITY"></label>
+    <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="Vice Noir · 3 AM in the rain"></label>
+
+    <h2>5 · Size &amp; export</h2>
+    <div class="row" role="group" aria-label="Post size">
+      <button type="button" data-size="1080x1080" class="active">1080 × 1080</button>
+      <button type="button" data-size="1080x1350">1080 × 1350</button>
+      <button type="button" data-size="1920x1080">1920 × 1080</button>
+    </div>
+    <button id="export" type="button" class="primary">Export PNG</button>
+    <p id="status" role="status"></p>
+  </section>
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
